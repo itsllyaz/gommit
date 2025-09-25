@@ -1,9 +1,6 @@
 package cmd
 
 import (
-	"fmt"
-	"os"
-
 	"github.com/llyas36/gommit/utils"
 	"github.com/spf13/cobra"
 )
@@ -31,11 +28,16 @@ var gitCmd = &cobra.Command{
 		// }
 		//
 		// ...
-		err := utils.GetRepoInfo()
-		if err != nil{
-			fmt.Fprintln(os.Stderr, "Error: ", err)
-			os.Exit(1)
-		}
+		//...
+		// output, err := utils.GitTotalCommit()
+		// if err != nil{
+		// 	fmt.Println("🌐 Origin: Not configured")
+
+		// }else{
+		// 	fmt.Printf("🌐 Origin: %v\n", output)
+		// }
+		//
+		utils.HandleBranch()
 
 	},
 
