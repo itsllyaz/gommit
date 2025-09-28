@@ -35,10 +35,12 @@ type CompletionResponse struct {
 
 
 
-var commitInfo = internal.HandleGitCommitMessage()
-var prompt = internal.FormatPrompt((commitInfo))
+// var commitInfo = internal.HandleGitCommitMessage()
+// var prompt = internal.FormatPrompt((commitInfo))
 
 func HandleRequest() string{
+	 commitInfo := internal.HandleGitCommitMessage()
+	 prompt := internal.FormatPrompt(commitInfo)
     apiKey := os.Getenv("OPENROUTER_API_KEY") // Set your OpenRouter API key as an environment variable
 
     if apiKey == "" {
