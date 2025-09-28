@@ -81,7 +81,7 @@ import (
 //         info[0].BreakingChange,
 //     )
 // }
-
+var showDetails bool
 var commitCmd = &cobra.Command{
     Use:   "commit",
     Short: "📝 Create a new commit with style!",
@@ -99,6 +99,11 @@ Let’s make your commit history beautiful and informative! 🚀`,
 
 
 	Run: func(cmd *cobra.Command, args []string){
+
+		if showDetails{
+			PrintDetails()
+			return
+		}
 
 		jsonContent := utils.HandleRequest()
 		content := utils.ExtractContent(jsonContent)
@@ -119,7 +124,22 @@ Let’s make your commit history beautiful and informative! 🚀`,
 // },
 
 
+func PrintDetails(){
+	fmt.Println(`📌 **Commit Types Overview**
+
+🛠️ **Feature** – New capability or enhancement
+🐞 **Bug Fix** – Fixes broken or unexpected behavior
+🔄 **Refactor** – Internal code cleanup, no behavior change
+📚 **Documentation** – Updates to README, comments, or guides
+🧪 **Test** – Adds or updates tests
+🧹 **Chore** – Maintenance tasks like dependency updates
+
+💡 Use these to guide your commit message structure!
+`)
+}
+
 
 func init(){
+	commitCmd.Flags().BoolVarP(&showDetails, "details", "d", false, "show commit type details and example")
 	rootCmd.AddCommand(commitCmd)
 }
