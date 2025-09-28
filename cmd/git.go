@@ -37,7 +37,7 @@ var gitCmd = &cobra.Command{
 		// 	fmt.Printf("🌐 Origin: %v\n", output)
 		// }
 		//
-		utils.HandleBranch()
+		utils.IsGitRepo()
 
 	},
 

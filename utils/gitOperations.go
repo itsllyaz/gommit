@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
-	"path/filepath"
 	"strings"
 )
 
@@ -80,7 +79,7 @@ func GetRepoInfo() (string,error){
    //  return nil
 }
 
-func GitStatus(){
+func GitStatus()(string, error){
 	// check if .git found
 	err := IsGitRepo()
 	if err != nil{
@@ -88,6 +87,14 @@ func GitStatus(){
 	}
 
 	// get current branch
+	// git status --porcelain
+	cmd := exec.Command("git", "status", "--porcelain")
+
+	out, err := cmd.Output()
+    if err != nil {
+        return "", err
+    }
+    return strings.TrimSpace(string(out)),nil
 }
 
 
@@ -111,72 +118,4 @@ func GitLastCommit() (string, error){
 
    // fmt.Println("Latest commit:", strings.TrimSpace(string(out)))
    return strings.TrimSpace(string(out)), err
-}
-
-
-
-func HandleInfo(){
-	PrintHeader("📊 Gommit - Repository Information")
-
-	err := IsGitRepo()
-	if err != nil{
-		fmt.Println("❌ This is not a git repository")
-	}
-
-	// repository name
-	wd, _ := os.Getwd()
-	repoName := filepath.Base(wd)
-	fmt.Printf("📁 Repository: %v\n", repoName)
-
-	// remote origin
-	output, err := GetGitOrigin()
-	if err != nil{
-		fmt.Println("🌐 Origin: Not configured")
-
-	}else{
-		fmt.Printf("🌐 Origin: %v\n", output)
-	}
-
-	// current branch
-	output, err = GetCurrentBranch()
-	if err != nil{
-		fmt.Println("Couldn't retrive the branch")
-	}else{
-		fmt.Printf("📍 Current branch: %v\n", output)
-	}
-
-	// last commit
-	output, err = GitLastCommit()
-	if err != nil{
-		fmt.Println("📝 Last commit: No commits yet")
-	}else{
-		fmt.Printf("📝 Last commit: %v\n", output)
-	}
-
-	// total commit
-	output, err = GitTotalCommit()
-	if err != nil{
-		fmt.Println("📈 Total commits: 0")
-	}else{
-		fmt.Printf("📈 Total commits: %v\n", output)
-	}
-
-
-}
-
-
-func HandleBranch(){
-	PrintHeader("🌿 Gommit - Branch Information")
-	err := IsGitRepo()
-	if err != nil{
-		fmt.Println("❌ This is not a git repository")
-
-	}
-
-	output, err := GetCurrentBranch()
-	if err != nil{
-		fmt.Println("No Branch found")
-	} else{
-		fmt.Printf("👉 %v  current\n", output)
-	}
 }

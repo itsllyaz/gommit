@@ -12,13 +12,18 @@ import (
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "gommit",
-	Short: "A brief description of your application",
-	Long: `A longer description that spans multiple lines and likely contains
-examples and usage of using your application. For example:
+	Short: "Gommit is a minimal Git assistant CLI ",
+	Long: `✨ Gommit - Smart Commit Assistant
 
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+This command helps you craft meaningful, well-structured commit messages.
+You'll be guided through a series of prompts to describe:
+  🔧 Type of change (Feature, Bug fix, etc.)
+  ✏️  What was changed
+  💡 Why it was changed
+  📍 Scope of impact
+  ⚠️  Any breaking changes
+
+Let’s make your commit history beautiful and informative! 🚀`,
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
 	// Run: func(cmd *cobra.Command, args []string) { },
@@ -38,7 +43,7 @@ func init() {
 	// Cobra supports persistent flags, which, if defined here,
 	// will be global for your application.
 
-	// rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.cobra-tu.yaml)")
+	// rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.gommit.yaml)")
 
 	// Cobra also supports local flags, which will only run
 	// when this action is called directly.
