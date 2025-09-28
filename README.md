@@ -1,4 +1,5 @@
-
+[![Go Report Card](https://goreportcard.com/badge/github.com/llyas36/gommit)](https://goreportcard.com/report/github.com/llyas36/gommit)  
+![Latest Release](https://img.shields.io/github/v/release/llyas36/gommit)
 ---
 
 ## 🧰 Git Assistant CLI
@@ -39,3 +40,4 @@ go build -o gommit
 ---
 
 Let me know if you want to add badges, license info, or examples with colored output!
+
