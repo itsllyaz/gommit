@@ -25,6 +25,13 @@ git clone https://github.com/llyas36/gommit.git
 cd gommit
 go build -o gommit
 ```
+Make it globally accessible (Optional)
+
+If you want to use GOMMIT from anywhere in your terminal, move it to a directory in your $PATH:
+```
+sudo mv gommit /usr/local/bin/
+```
+
 ### ⚙️ Setup
 
 To enable the **AI-powered commit messages**, you’ll need an API key from [OpenRouter](https://openrouter.ai).
@@ -88,4 +95,5 @@ Open a Pull Request
 ### 📄 License
 
 This project is licensed under the MIT License. See the LICENSE
+
 
