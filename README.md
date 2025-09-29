@@ -71,7 +71,7 @@ gommit git
 
 ---
 
-Let me know if you want to add badges, license info, or examples with colored output!
+
 
 ### Contributing
 
@@ -88,3 +88,4 @@ Open a Pull Request
 ### 📄 License
 
 This project is licensed under the MIT License. See the LICENSE
+
