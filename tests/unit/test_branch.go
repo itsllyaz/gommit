@@ -4,7 +4,7 @@ Copyright © 2025 NAME HERE <EMAIL ADDRESS>
 package tests
 
 import (
-	"github.com/llyas36/gommit/utils"
+	"github.com/itsllyaz/gommit/utils"
 	"github.com/spf13/cobra"
 )
 

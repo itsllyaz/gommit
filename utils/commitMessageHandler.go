@@ -2,13 +2,16 @@ package utils
 
 import (
 	"bytes"
+	"context"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"log"
 	"net/http"
 	"os"
 
-	"github.com/llyas36/gommit/internal"
+	"github.com/itsllyaz/gommit/internal"
+	"google.golang.org/genai"
 )
 
 const openRouterURL = "https://openrouter.ai/api/v1/chat/completions"
@@ -49,10 +52,15 @@ func HandleRequest() string{
     }
 
     reqBody := RequestBody{
-        Model: "cognitivecomputations/dolphin-mistral-24b-venice-edition:free",
-        Messages: []Message{
-            {Role: "user", Content: prompt},
-        },
+       // Model: "cognitivecomputations/dolphin-mistral-24b-venice-edition:free",
+        //Messages: []Message{
+        //    {Role: "user", Content: prompt},
+       // },
+
+	   Model: "",
+	   Messages: []Message{
+		   {Role: "user", Content: prompt,}, 
+	   },
     }
 
     jsonData, err := json.Marshal(reqBody)
@@ -98,15 +106,41 @@ func ExtractContent(jsonInput string) string {
 
     return response.Choices[0].Message.Content
 }
+func ExtractGeminiContent(message string) string{
+	if message == ""{
+		return "⚠️ No choices found in response." 
+	}
+	return message
+}
+func HandleGemini() string{
+	apiKey := os.Getenv("AI_API_KEY")
+	if apiKey == ""{
+		fmt.Println("Please set The Gemini API KEY")
+		os.Exit(1)
+	}
+	commitInfo := internal.HandleGitCommitMessage()
+	prompt := internal.FormatPrompt(commitInfo)
+	
+    ctx := context.Background()
+    client, err := genai.NewClient(ctx, &genai.ClientConfig{
+    	APIKey:  apiKey,
+        Backend: genai.BackendGeminiAPI,
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
 
-
-// func main(){
-// 	fmt.Println(">>>>")
-// 	jsonContent := HandleRequest()
-// 	content := ExtractContent(jsonContent)
-
-// 	fmt.Println("..........")
-// 	fmt.Println(content)
-// 	fmt.Println("..........")
-
-// }
+    result, err := client.Models.GenerateContent(
+        ctx,
+        "gemini-2.5-flash",
+        genai.Text(prompt),
+        nil,
+    )
+    if err != nil {
+        log.Fatal(err)
+    }
+//    fmt.Println(result.Text())
+	fmt.Println("Response from Gemini gemini-2.5-flash:")
+	return result.Text()
+}
+    

@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"github.com/llyas36/gommit/utils"
+	"github.com/itsllyaz/gommit/utils"
 	"github.com/spf13/cobra"
 )
 

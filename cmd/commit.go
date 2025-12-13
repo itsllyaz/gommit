@@ -3,7 +3,7 @@ package cmd
 import (
 	"fmt"
 
-	"github.com/llyas36/gommit/utils"
+	"github.com/itsllyaz/gommit/utils"
 	"github.com/spf13/cobra"
 )
 
@@ -105,8 +105,8 @@ Let’s make your commit history beautiful and informative! 🚀`,
 			return
 		}
 
-		jsonContent := utils.HandleRequest()
-		content := utils.ExtractContent(jsonContent)
+		message := utils.HandleGemini()
+		content := utils.ExtractGeminiContent(message)
 		fmt.Println("\n✅ Your commit message is ready! Copy and use it below 👇")
 		fmt.Printf("\n💬: %v\n",content)
 	},
