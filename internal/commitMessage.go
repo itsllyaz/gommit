@@ -20,12 +20,12 @@ func HandleGitCommitMessage() []MessageFlow {
     fmt.Print(`
 🔧 What type of change is this?
    Choose one of the following:
-   🛠️  Features
-   🐞  Bug fix
-   🔄  Refactor
-   📚  Documentation
-   🧪  Test
-   🧹  Chore
+   🛠️  Features ------- New capability or enhancement
+   🐞  Bug fix  ------- Fixes broken or unexpected behavior
+   🔄  Refactor ------- Internal code cleanup, no behavior change
+   📚  Documentation -- Updates to README, comments, or guides
+   🧪  Test     ------- Adds or updates tests
+   🧹  Chore    ------- Maintenance tasks like dependency updates
 👉 Type your choice: `)
     typeOfChangeInput, _ := typeOfChangeReader.ReadString('\n')
     typeOfChangeInput = strings.TrimSpace(typeOfChangeInput)
