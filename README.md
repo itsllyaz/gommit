@@ -18,7 +18,7 @@ A lightweight command-line tool to help you interact with Git more easily. Built
 Clone the repo and build the binary:
 
 ```bash
-git clone https://github.com/yourusername/gommit.git
+git clone https://github.com/itsllyaz/gommit.git
 cd gommit
 go build -o gommit
 ```
@@ -53,4 +53,5 @@ To enable the AI-powered commit messages, you'll need an API KEY, We have to opt
 ---
 
 made with :heart:
+
 
