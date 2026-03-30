@@ -44,6 +44,15 @@ To enable the AI-powered commit messages, you'll need an API KEY, We have to opt
 ./gommit remote     # Show remote URL
 ./gommit count      # Show total number of commits
 ```
+### Screenshots
+
+<img width="1366" height="768" alt="gommit" src="https://github.com/user-attachments/assets/9ff580aa-c606-4888-8eb9-3523406a5026" />
+
+<img width="1366" height="768" alt="gommit-branch" src="https://github.com/user-attachments/assets/278ffad6-cb73-4903-96db-416c309969c9" />
+
+<img width="1366" height="768" alt="gommit-info" src="https://github.com/user-attachments/assets/af9dba47-14ec-4717-9ef7-f6af396ce8ee" />
+
+<img width="1366" height="768" alt="gommit-status" src="https://github.com/user-attachments/assets/d9e9776e-cc47-42b9-8454-68fa6433ee60" />
 
 ###  Built With
 
