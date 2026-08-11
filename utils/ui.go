@@ -1,9 +1,9 @@
 package utils
 
-import (
-	"fmt"
-)
-var Logo string  =  `#     _______  _______  _______  _______ __________________
+import "github.com/fatih/color"
+
+// Logo is the ASCII banner shown in command headers.
+var Logo string = `#     _______  _______  _______  _______ __________________
 #    (  ____ \(  ___  )(       )(       )\__   __/\__   __/
 #    | (    \/| (   ) || () () || () () |   ) (      ) (
 #    | |      | |   | || || || || || || |   | |      | |
@@ -12,17 +12,21 @@ var Logo string  =  `#     _______  _______  _______  _______ __________________
 #    | (___) || (___) || )   ( || )   ( |___) (___   | |
 #    (_______)(_______)|/     \||/     \|\_______/   )_(
 #                                                          `
-var Tagline string = "Your personal Git assistant"
-func main() {
 
-    //fmt.Println(logo)
+// Tagline is shown alongside branding output.
+var Tagline = "Your personal Git assistant"
 
-    //Tagline := "Your personal Git assistant'"
+// Red prints a formatted line in red.
+func Red(format string, args ...any) {
+	color.Red(format, args...)
 }
 
-func PrintHeader(commandTitle string){
-	fmt.Println(Logo)
-	fmt.Printf("     ***GOMMIT YOUR PERSONAL GIT ASSISTANT***\n\n")
+// Green prints a formatted line in green.
+func Green(format string, args ...any) {
+	color.Green(format, args...)
+}
 
-	fmt.Printf("%v \n\n", commandTitle)
+// Yellow prints a formatted line in yellow.
+func Yellow(format string, args ...any) {
+	color.Yellow(format, args...)
 }
